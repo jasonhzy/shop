@@ -1,0 +1,109 @@
+[ 2014-02-26T19:59:54+08:00 ] 127.0.0.1 /wxsc.v1.3/install.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001684s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.020761s ]
+INFO: [ view_template ] --END-- [ RunTime:0.031532s ]
+INFO: [ view_parse ] --START--
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.055945s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.003668s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.057429s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.005159s ]
+INFO: Run ParseTemplate Behavior [ RunTime:-0.057429s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016960s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.069373s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.070779s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.072308s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.073593s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005552s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.075054s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001389s ]
+
+[ 2014-02-26T19:59:57+08:00 ] 127.0.0.1 /wxsc.v1.3/install.php?m=index&a=setconf
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002189s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.002798s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002031s ]
+INFO: [ view_parse ] --START--
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.008422s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.003593s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.010379s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.005551s ]
+INFO: Run ParseTemplate Behavior [ RunTime:-0.010379s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040953s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.045946s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.047373s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.048608s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.049939s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005323s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.051363s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001419s ]
+
+[ 2014-02-26T20:00:36+08:00 ] 127.0.0.1 /wxsc.v1.3/install.php?m=index&a=install
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001645s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001779s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.004258s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002221s ]
+INFO: [ view_parse ] --START--
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.010704s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.004228s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.012704s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.006237s ]
+INFO: Run ParseTemplate Behavior [ RunTime:-0.012704s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016244s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.022839s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.024283s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.025780s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.028036s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006682s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.029633s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001276s ]
+
+[ 2014-02-26T20:00:44+08:00 ] 127.0.0.1 /wxsc.v1.3/install.php?m=index&a=finish_done
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003746s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006095s ]
+
+[ 2014-02-26T20:00:46+08:00 ] 127.0.0.1 /wxsc.v1.3/install.php?m=index&a=finish
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001321s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001448s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.004761s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002148s ]
+INFO: [ view_parse ] --START--
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.010405s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.003503s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.011877s ]
+INFO: [ view_template ] --END-- [ RunTime:-0.004981s ]
+INFO: Run ParseTemplate Behavior [ RunTime:-0.011877s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031989s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.039019s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.040342s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.041563s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.042772s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005214s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.044345s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001270s ]
+

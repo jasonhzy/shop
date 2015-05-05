@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:headtop" />
+	<script charset="utf-8" src="__STATIC__/weixin/js/goodsinfo.js" type="text/javascript"></script>
+	<script charset="utf-8" src="__STATIC__/weixin/js/jquery.js" type="text/javascript"></script>
+	<script charset="utf-8" src="__STATIC__/weixin/js/colorbox.js" type="text/javascript"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/weixin/colorbox.css">
+    <css file="__STATIC__/css/default/item.css" />
+    
+</head>
+
+<body>
+<include file="public:head" />
+<div class="s_bottom"></div>
+ 
+<div id="content">
+
+	<script type="text/javascript">
+
+    function buys($n)
+    {
+    	
+        var goodId = $("#goodId").val();
+        var quantity = $("#quantity").val();
+		
+		var attr="";
+		for(var i=1; i<$n+1; i++){			
+			if(i == $n){				
+				 attr += $('input:radio[name="shuxing_'+i+'"]:checked').val();				
+			}else{			
+		        attr += $('input:radio[name="shuxing_'+i+'"]:checked').val()+'|'; 
+			 }
+		
+		}
+		 
+      
+        if (quantity == '')
+        {
+            alert('请输入购买数量');
+            return;
+        }
+        if (parseInt(quantity) < 1)
+        {
+            alert("购买数量不能小于1");
+            return;
+        }
+        if(isNaN(quantity))
+        {
+          alert("请输入数字!");
+           return;
+        }
+        add_cart(goodId, quantity,attr);
+    }
+    
+  
+  
+    function add_cart(goodId,quantity,attr)//商品ID，购买数量
+    {
+    	
+     	var url  = "{:U('shopcart/add_cart')}";
+     	$.post(url,{goodId:goodId,quantity:quantity,attr:attr},function(data){
+			
+     		if(data.status==1)
+     		{
+     			
+     			$('.dialog_title').html(data.msg);
+     			$('.bold_num').text(data.count);
+     			 $('.bold_mly').html(data.sumPrice);
+     			 $('.ware_cen').slideDown('slow');
+     			 setTimeout(slideUp_fn, 5000);
+     		}else
+     		{
+     			$('.dialog_title').html(data.msg);
+     			$('.bold_num').text(data.count);
+     			 $('.bold_mly').html(data.sumPrice);
+     			 $('.ware_cen').slideDown('slow');
+     			 setTimeout(slideUp_fn, 5000);
+     		}
+     	},'json');	
+    }
+    
+    
+    /* add cart */
+  function add_to_cart(spec_id, quantity)
+    {
+        var url = SITE_URL + '/index.php?app=cart&amp;act=add';
+        $.getJSON(url, {'spec_id':spec_id, 'quantity':quantity}, function(data){
+            if (data.done)
+            {
+                $('.bold_num').text(data.retval.cart.kinds);
+                $('.bold_mly').html(price_format(data.retval.cart.amount));
+                $('#n_3 i').css({display:"block"});
+                $('#n_3 i').text(data.retval.cart.kinds);
+                $('.ware_cen').slideDown('slow');
+                setTimeout(slideUp_fn, 5000);
+            }
+            else
+            {
+                //alert(data.msg);
+                $('.ware_center').html('&lt;h1&gt;'+data.msg+'&lt;/h1&gt;&lt;a class="enter" href="'+SITE_URL +'/index.php?app=cart&amp;store_id=9"&gt;现在去结算&lt;/a&gt;');
+                $('.ware_cen').slideDown('slow');
+                setTimeout(slideUp_fn, 5000);
+            }
+        });
+    }
+    
+    </script>
+    
+    <script>
+			$(document).ready(function(){
+			
+				$(".group1").colorbox({rel:'group1',width:"100%",height:"100%"});
+			
+			});
+		</script>
+    <div class="ware_info">
+            <div class="ware_pic"></div>
+         <div id="slider" class="slider" style="overflow: hidden; visibility: visible; list-style: none outside none; position: relative;">
+        <ul id="sliderlist" class="sliderlist" style="position: relative; overflow: hidden; transition: left 600ms ease 0s; width: 1800px; left: -1200px;">
+        <volist name='img_list' id='img'>
+            <li style="float: left; display: block; width: 600px;">
+                <span>
+                   <a  class="group1" href="{:attach(get_thumb($img['url'], '_b'),'item')}"><img  width="90%" height="85%" src="{:attach(get_thumb($img['url'], '_b'), 'item')}"></a>
+                </span>
+            </li>
+        </volist>
+      
+        </ul>
+        <div id="pagenavi">
+         <volist name='img_list' id='vo' key='k' >
+           <a <if condition='$k eq 1'>class="active"</if> href="javascript:void(0);">{$k}</a>
+        </volist>
+        
+        </div>
+    </div>
+            <script type="text/javascript">
+           var active=0,
+		as=document.getElementById('pagenavi').getElementsByTagName('a');
+	
+		for(var i=0;i<as.length;i++){
+			(function(){
+				var j=i;
+				as[i].onclick=function(){
+					t2.slide(j);
+					return false;
+				}
+			})();
+		}
+		var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:function(index){
+				as[active].className='';
+				active=index;
+				as[active].className='active';
+			}});
+            </script>
+            <input type="hidden" value="{$item.id}" id="goodId" >
+        <div class="ware_text">
+            <div class="rate">
+                <h2 class="ware_title">{$item.title}</h2>   
+                 <!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdsharebuttonbox bds_tools_32 get-codes-bdshare" style="font-size:1em; height:37px; line-height:37px; float:none;margin-bottom:10px">
+<span style="float:left; margin-top:2px">分享到：</span>
+<a href="#" class="bds_more" data-cmd="more"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a> 
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["weixin","sqq","qzone","tsina","tqq"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","sqq","qzone","tsina","tqq"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<!-- Baidu Button END --> 
+
+    	
+                <span class="letterprice">现价: </span>
+                <span ectype="goods_price" class="fontColor3">¥{$item.price}</span><br>                       
+                <span class="letter1">品牌: </span>{$item.brand}<br>
+                
+                <volist name="attr_list" id="val" key="k" >
+                {$val.attr_name}:{$val.attr_value|shuxing = $k}<br>
+                </volist>  
+                              
+                销售情况: 售出 {$item.buy_num} 件<br>
+                所在地区: 中国 
+                                       
+            </div>
+            <div class="handle">
+                <ul>
+                    <li class="handle_title">购买数量: </li>
+                    <li>
+                        <input type="text" value="1" id="quantity" name="" class="text width1" onafterpaste="this.value=this.value.replace(/\D/g,'')" onKeyUp="this.value=this.value.replace(/\D/g,'')" />
+                        件（库存<span ectype="goods_stock" class="stock">{$item.goods_stock}</span>件）
+                    </li>
+                </ul>
+            </div>
+            <ul class="ware_btn">
+                <div style="display:none;" class="ware_cen">
+                    <div class="ware_center">
+                        <h1>
+                            <span class="dialog_title"></span>
+                            <span onClick="slideUp_fn();" onMouseOut="this.className = 'close_link'" onMouseOver="this.className = 'close_hover'" title="关闭" class="close_link"></span>
+                        </h1>
+                        <div class="ware_cen_btn">
+                            <p class="ware_text_p">购物车内共有 <span class="bold_num"></span> 种商品 共计 <span class="bold_mly"></span></p>
+                            <p class="ware_text_btn">
+                                <a href="{:U('shopcart/index')}"><input type="submit" onClick="#" value="查看购物车" name="" class="btn1"></a>
+                                <input type="submit" onClick="$('.ware_cen').css({'display':'none'});" value="继续挑选商品" name="" class="btn2">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="ware_cen_bottom"></div>
+                </div>
+                <li onClick="javascript:buys({$attr_num});" title="立刻购买" class="enter">立刻购买</li>
+            </ul>
+        </div>
+    
+        <div class="clear"></div>
+    </div>
+    <a name="module"></a>
+    <ul class="user_menu">
+        <div class="ornament1"></div>
+        <div class="ornament2"></div>
+        <li><a href="#" class="active" name="spxq" ><span>商品详情</span></a></li>
+        <li><a href="#sppl" class="normal" ><span>商品评论</span></a></li>
+    </ul>
+    <div class="option_box">
+        <div class="default">
+        {$item.info}
+        </div>
+    </div>
+    <ul class="user_menu">
+        <div class="ornament1"></div>
+        <div class="ornament2"></div>
+        <li><a href="#spxq" class="normal"  ><span>商品详情</span></a></li>
+        <li><a href="#" class="active" name="sppl" ><span>商品评论</span></a></li>
+    </ul>
+   
+<div id="J_comment_area" class="comment_area"  data-id="{$item.id}">
+                
+                <div class="comment_publish">
+                    <div class="pub_box">
+                    <textarea id="J_cmt_content" name="content" class="pub_content" def-val="{:L('item_cmt_def')}">{:L('item_cmt_def')}</textarea>		                   </div>
+                    <div class="pub_act"><a href="javascript:;" onclick="pubcom()" id="J_cmt_submit" class="submit r3 fr">{:L('ok')}</a></div>
+                </div>
+                <div class="comment_list">
+                    <ul id="J_cmt_list">
+                        <volist name="cmt_list" id="val">
+                        <li> 
+                            <a href="#" target="_blank"><img src="{:avatar($val['uid'], 48)}" class="J_card avt" data-uid="{$val.uid}" /></a>
+                            <p><a href="#" class="J_card n" data-uid="{$val.uid}" target="_blank">{$val.uname}</a></p>
+                            <p>{$val.info}<span>&nbsp;&nbsp;&nbsp;{$val.add_time|fdate}</span></p>
+                        </li>
+                        </volist>
+                    </ul>
+                    <div id="J_cmt_page" class="page_bar">{$page_bar}</div>
+                </div>
+            </div>
+            
+    <div class="clear"></div>
+</div>
+
+<script src="__STATIC__/js/jquery/plugins/jquery.jqzoom.js"></script>
+<script src="__STATIC__/js/jquery/plugins/jquery.jcarousel.js"></script>
+<include file="public:footer" />
+<script src="__STATIC__/js/comment.js"></script>
+
+</body>
+</html>

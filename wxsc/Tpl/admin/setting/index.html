@@ -1,0 +1,99 @@
+<include file="public:header" />
+<!--网站设置-->
+<div class="pad_lr_10">
+	<form id="info_form" action="{:u('setting/edit')}" method="post" enctype="multipart/form-data">
+	<table width="100%" class="table_form">
+        <tr>
+            <th width="150">{:L('site_name')} :</th>
+            <td><input type="text" name="setting[site_name]" class="input-text" size="50" value="{:C('pin_site_name')}"></td>
+        </tr>
+        <tr>
+            <th>{:L('seo_title')} :</th>
+            <td><input type="text" name="setting[site_title]" class="input-text" size="50" value="{:C('pin_site_title')}"></td>
+        </tr>
+        <tr>
+            <th>{:L('seo_keys')} :</th>
+            <td><input type="text" name="setting[site_keyword]" class="input-text" size="50" value="{:C('pin_site_keyword')}"></td>
+        </tr>
+        <tr>
+            <th>{:L('seo_desc')} :</th>
+            <td><textarea rows="3" cols="50" name="setting[site_description]">{:C('pin_site_description')}</textarea></td>
+        </tr>
+         <tr>
+            <th>微信公众号二维码 :</th>
+            <td>
+            <?php if(C('pin_weixin_img')!=''){ ?>
+            <img src="<?php echo attach(get_thumb(C('pin_weixin_img'), ''), 'weixin'); ?>" width="100" height="100"/><br />
+            <?php }else{ ?>
+            <?php } ?>
+  	<input type="file" name="weixin_img" /></td>
+        </tr>
+         <tr>
+            <th>微信公商城二维码 :</th>
+            <td>
+            <?php if(C('pin_weixinshop_img')!=''){ ?>
+            <img src="<?php echo attach(get_thumb(C('pin_weixinshop_img'), ''), 'weixin'); ?>" width="100" height="100"/><br />
+            <?php }else{ ?>
+            <?php } ?>
+  	<input type="file" name="weixinshop_img" /></td>
+        </tr>
+        <tr>
+        <th width="150">启用支付宝 :</th>
+            <td>
+                <label><input type="radio" <if condition="C('pin_ipban_switch') eq '1'">checked="checked"</if> value="1" name="setting[ipban_switch]"> {:L('open')}</label> &nbsp;&nbsp;
+                <label><input type="radio" <if condition="C('pin_ipban_switch') eq '0'">checked="checked"</if> value="0" name="setting[ipban_switch]"> {:L('close')}</label>
+                <span class="gray ml10">如果本站没有企业支付宝，建议关闭。</span>
+            </td> 
+           </tr> 
+        <tr>
+          <th width="150">启用财付通 :</th>
+            <td>
+                <label><input type="radio" <if condition="C('pin_tenpay') eq '1'">checked="checked"</if> value="1" name="setting[tenpay]"> {:L('open')}</label> &nbsp;&nbsp;
+                <label><input type="radio" <if condition="C('pin_tenpay') eq '0'">checked="checked"</if> value="0" name="setting[tenpay]"> {:L('close')}</label>
+                <span class="gray ml10">如果本站没有财付通，建议关闭。</span>
+            </td>  
+            </tr>
+           <tr>
+            <th>支付宝个人主页收款:</th>
+            <td><textarea rows="2" cols="50" name="setting[alipayhome]">{:C('pin_alipayhome')}</textarea>
+             <p>如：https://me.alipay.com/zhengjun，客户付款后，请查看支付记录，并在订单处理中手动完成后台付款操作！</p>如果不需要接入个人支付宝主页收款请不要填写内容。</td>
+            
+        </tr>
+        <tr>
+            <th>在线客服系统代码:</th>
+            <td><textarea rows="5" cols="50" name="setting[statistics_code]">{:C('pin_statistics_code')}</textarea>
+            <p>需要您去百度商桥网站申请账号。<a href="http://qiao.baidu.com" style="color:#F00" target="_blank">【百度商桥】</a> 。然后登陆客服系统后台设置，设置手机网站客服代码，将设置好的代码粘贴此处。</p><p>应答客户咨询可以下载pc客户端或手机客户端app。</p>不需要客服系统，可删除客服代码即可</td>
+            
+        </tr> 
+    	<tr>
+        	<th>{:L('site_status')} :</th>
+        	<td>
+            	<label><input type="radio" class="J_change_status" <if condition="C('pin_site_status') eq '1'">checked="checked"</if> value="1" name="setting[site_status]"> {:L('open')}</label> &nbsp;&nbsp;
+                <label><input type="radio" class="J_change_status" <if condition="C('pin_site_status') eq '0'">checked="checked"</if> value="0" name="setting[site_status]"> {:L('close')}</label>
+            </td>
+    	</tr>
+        <tr id="J_closed_reason" <if condition="C('pin_site_status') eq 1">class="hidden"</if>>
+        	<th>{:L('closed_reason')} :</th>
+        	<td><textarea rows="4" cols="50" name="setting[closed_reason]" id="closed_reason">{:C('pin_closed_reason')}</textarea></td>
+    	</tr>
+        <tr>
+        	<th></th>
+        	<td><input type="hidden" name="menuid"  value="{$menuid}"/><input type="submit" class="btn btn_submit" value="{:L('submit')}"/></td>
+    	</tr>
+	</table>
+	</form>
+</div>
+<include file="public:footer" />
+<script>
+$(function(){
+    $('.J_change_status').live('click', function(){
+        if($(this).val() == '0'){
+            $('#J_closed_reason').fadeIn();
+        }else{
+            $('#J_closed_reason').fadeOut();
+        }
+    });
+});
+</script>
+</body>
+</html>

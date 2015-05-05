@@ -1,0 +1,31 @@
+<div id="footer" class="footer">
+				<div class="row g_1">
+					<a href="{:U('user/login')}">登录</a>
+					<a href="{:U('user/register')}">注册</a>
+					<a href="javascript:window.scrollTo(0,0);">返回顶部</a>
+				</div>
+				<!--<div class="row g_2">
+					<a class="goDesktop" href="{:U('index/index')}">电脑版</a>
+				</div>-->
+				<div class="row g_2">
+					 <p>{:C('pin_site_name')}   {:C('pin_statistics_code')}</p>
+				</div>
+			</div>
+      
+<script>
+var PINER = {
+    root: "__ROOT__",
+    uid: "<?php echo $visitor['id'];?>", 
+    async_sendmail: "<?php echo $async_sendmail;?>",
+    config: {
+        wall_distance: "<?php echo C('pin_wall_distance');?>",
+        wall_spage_max: "<?php echo C('pin_wall_spage_max');?>"
+    },
+    //URL
+    url: {}
+};
+//语言项目
+var lang = {};
+<volist name=":L('js_lang')" id="val">lang.{$key} = "{$val}";</volist>
+</script>
+<pin:load type="js" href="__STATIC__/js/jquery/plugins/jquery.tools.min.js,__STATIC__/js/jquery/plugins/jquery.masonry.js,__STATIC__/js/jquery/plugins/formvalidator.js,__STATIC__/js/fileuploader.js,__STATIC__/js/pinphp.js,__STATIC__/js/front.js,__STATIC__/js/dialog.js,__STATIC__/js/wall.js,__STATIC__/js/item.js,__STATIC__/js/user.js,__STATIC__/js/album.js" />
